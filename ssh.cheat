@@ -1,0 +1,7 @@
+% network, ssh
+
+# Connect to a machine with SSH by jumping through another
+ssh -J <hop> <dest>
+
+# Copy file from a machine with SSH by jumping through another
+scp -oProxyJump=<hop> <dest>:<src_file> <dest_file>

@@ -1,0 +1,39 @@
+% network
+
+# Show statistics by protocol
+netstat -s
+
+# List all ports
+protocols=($(echo "<protocols>"))
+netstat -a ${protocols[@]}
+
+# List all listening ports
+protocols=($(echo "<protocols>"))
+netstat -l ${protocols[@]}
+
+# List IP addresses connected on a port
+netstat -n <protocol> 2>/dev/null \
+| grep :<port> \
+| awk '{print $5}' \
+| cut -d: -f1 \
+| sort \
+| uniq -c \
+| sort -nr \
+| head
+
+# Show network interface transactions
+netstat -i
+
+$ protocol: echo -e '-u UDP\n-t TCP\n-x UNIX' --- --column 1
+$ protocols: echo -e '-u UDP\n-t TCP\n-x UNIX' --- --multi --column 1
+$ port: netstat -n -l ${protocol} | awk '{print $4}' | grep -oE '([0-9]+)$'
+
+# Find primary, local IP address
+ifconfig \
+| grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' \
+| grep -Eo '([0-9]*\.){3}[0-9]*' \
+| grep -v '127.0.0.1' \
+| tail -n1
+
+# Find external, public IP address
+dig +short myip.opendns.com @resolver1.opendns.com

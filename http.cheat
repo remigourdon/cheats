@@ -1,0 +1,66 @@
+% curl, http
+
+# Send a get http request
+curl <url>
+
+# Send a http request
+curl -X <method> <url>
+
+# Send a http request and write the output to a file
+curl -X <method> <url> -o <filename>
+
+# Send a get http request and follow redirects
+curl -L <url>
+
+# Send a get http request exit with a non-zero status code on failure
+curl --fail <url>
+
+# Send an authenticated http request
+curl -u <username>:<password> -X <method> <url>
+
+# Send a http request with a json body
+curl -X <method> <url>  -H 'Content-Type: application/json' -d '<json>'
+
+# Send a http request with a form body
+curl <url> -d <bodykey>=<bodyvalue>
+
+# Send a http request and see the request as well as the response
+curl -v <url>
+
+# Send a http request wih a body from a file
+curl -X <method> <url> --data-binary "@<file>"
+
+# Send a http request wih a custom header
+curl -X <method> <url> -H "<headername>: <headervalue>"
+
+$ file: ls
+$ method: echo -e 'GET\nPOST\nPUT\nDELETE\nPATCH'
+
+% httpie, http
+
+# Send a get http request
+http <url>
+
+# Send a http request
+http <method> <url>
+
+# Send an authenticated http request
+http -a <username>:<password> <method> <url>
+
+# Send a http request with a json body
+http <method> <url> <bodykey>=<bodyvalue>
+
+# Send a http request with a form body
+http -f POST <url> <bodykey>=<bodyvalue>
+
+# Send a http request and see the request as well as the response
+http -v <url>
+
+# Send a post http request wih a body from a file
+http <method> <url> < <file>
+
+# Send a http request wih a custom header
+http <method> <url> <headername>:<headervalue>
+
+$ file: ls
+$ method: echo -e 'GET\nPOST\nPUT\nDELETE\nPATCH'

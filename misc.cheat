@@ -1,0 +1,32 @@
+% progress
+
+# Monitor progress of a command
+<cmd> & progress -mp $!
+
+% weather
+
+# Show weather info for current location
+curl -s "wttr.in" | grep -v "New feature" | grep -v Follow
+
+# Show weather info for a specific location
+curl -s "wttr.in/<location>" | grep -v "New feature" | grep -v Follow
+
+% system
+
+# Get name of currently connected monitors
+xrandr --query | grep -o '^[^ ]* connected' | cut -d' ' -f1
+
+; https://stackoverflow.com/a/692407
+# Pipe stdout and stderr using tee
+(<CMD>) > >(tee -a stdout.log) 2> >(tee -a stderr.log >&2)
+
+# Pipe stdout and stderr using tee with timestamps
+(<CMD>) > >(while read -r l ; do echo -e "[$(date)]\t$l" ; done | tee -a stdout.log) 2> >(while read -r l ; do echo -e "[$(date)]\t$l" ; done | tee -a stderr.log >&2)
+
+% readline
+
+# List all possible readline bindings
+bind -l
+
+# List currently set readline bindings
+bind -p

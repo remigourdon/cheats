@@ -18,6 +18,9 @@ gzip <path>
 # Decompress compressed file
 gzip -d <gz_file>
 
+# Compress output of find
+find -type f -regex '<filter>' -print0 | xargs -0 zip -g <output>.zip
+
 $ path: ls
 $ tar_file: ls *.tar
 $ targz_file: ls *.tar.gz

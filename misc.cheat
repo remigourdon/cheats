@@ -30,3 +30,22 @@ bind -l
 
 # List currently set readline bindings
 bind -p
+
+% udev
+
+# Get udev info (product, vendor and serial) for device
+udevadm info -a -n <device> | grep -E 'ATTRS\{(serial|idVendor|idProduct)\}'
+
+# Reload and trigger the rules
+sudo udevadm control --reload-rules && sudo udevadm trigger
+
+% socat
+
+# Create a pair of virtual serial ports
+socat -d -d pty,raw,echo=0 pty,raw,echo=0
+
+# Share virtual serial port on TCP (server)
+socat -d -d pty,link=${HOME}/dev/virtualcom0,raw,echo=0 tcp-listen:<port>
+
+# Share virtual serial port on TCP (client)
+socat -d -d pty,link=${HOME}/dev/virtualcom0,raw,echo=0 tcp:<host_ip>:<port>

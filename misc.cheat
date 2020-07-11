@@ -23,6 +23,9 @@ xrandr --query | grep -o '^[^ ]* connected' | cut -d' ' -f1
 # Pipe stdout and stderr using tee with timestamps
 (<CMD>) > >(while read -r l ; do echo -e "[$(date)]\t$l" ; done | tee -a stdout.log) 2> >(while read -r l ; do echo -e "[$(date)]\t$l" ; done | tee -a stderr.log >&2)
 
+# Get processes attached to a file
+lsof <FILE>
+
 % readline
 
 # List all possible readline bindings

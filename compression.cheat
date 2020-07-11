@@ -1,7 +1,7 @@
 % compression
 
 # Backup home with tar
-tar --exclude-vcs --exclude=’/home/remi/TresoritDrive’ -zcvpf /media/remi/Backup/$(hostname)-backup-$(date +%Y-%m-%d).tar.gz /home/remi
+tar --exclude-vcs --exclude='/home/remi/TresoritDrive' -zcvpf /media/remi/Backup/$(hostname)-backup-$(date +%Y-%m-%d).tar.gz /home/remi
 
 # Create a tar containing files
 tar cf <name>.tar <files>

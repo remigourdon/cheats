@@ -1,0 +1,7 @@
+% dev, rust
+
+# Run Rust check and tests with cargo watch
+cargo watch -c -x 'check' -x 'test --all -- --nocapture'
+
+# Run Rust doc with private items
+cargo watch -c -x 'doc --document-private-items'

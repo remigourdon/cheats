@@ -5,6 +5,8 @@
 ; -a archive mode (copy recursively and preserve lynks, permissions, user, group, timestamps)
 ; -e protocol to use
 ; -n dry run
+; -u skip files that are newer on the receiver
+; -c skip files based on checksum
 
 # Copy file locally
 rsync --progress -zvh <file> <dest_dir>/
@@ -20,5 +22,8 @@ rsync --progress -avzh -e 'ssh -p 22' <remote>:<remote_dir>/ <dest_dir>/
 
 # Copy files with specific extension
 rsync -rv --include '*/' --include '*.<ext>' --exclude '*' --prune-empty-dirs <src_dir>/ <dest_dir>/
+
+# Synchronize 2 directories and skip files newer on destination or with same checksum
+rsync -rtvuc <src_dir>/ <dest_dir>/
 
 $ src_dir: find . -maxdepth 1 -type d

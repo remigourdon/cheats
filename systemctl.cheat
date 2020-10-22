@@ -30,6 +30,9 @@ systemctl list-unit-files --type=service --state=enabled
 # List disabled services
 systemctl list-unit-files --type=service --state=disabled
 
+# Set keymap to altgr-intl
+localectl set-x11-keymap us "" altgr-intl
+
 $ service_inactive: systemctl list-units --type=service --state=inactive | awk '{print $1}' | grep .service | sed 's/.service$//'
 $ service_active: systemctl list-units --type=service --state=active | awk '{print $1}' | grep .service | sed 's/.service$//'
 $ service_enabled: systemctl list-unit-files --type=service --state=enabled | awk '{print $1}' | grep .service | sed 's/.service$//'

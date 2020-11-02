@@ -1,0 +1,4 @@
+% conversion
+
+# Convert Excel to CSV
+libreoffice --headless --convert-to csv --outdir <output_dir> <csv_file>

@@ -1,0 +1,25 @@
+# rsync
+
+- Copy file locally
+
+`rsync --progress -zvh <file> <dest_dir>/`
+
+- Copy directory locally
+
+`rsync --progress -avzh <src_dir>/ <dest_dir>/`
+
+- Copy directory recursively to remote with SSH
+
+`rsync --progress -avzh -e 'ssh -p 22' <src_dir>/ <remote>:<remote_dir>/`
+
+- Copy directory recursively to remote with SSH
+
+`rsync --progress -avzh -e 'ssh -p 22' <remote>:<remote_dir>/ <dest_dir>/`
+
+- Copy files with specific extension
+
+`rsync -rv --include '*/' --include '*.<ext>' --exclude '*' --prune-empty-dirs <src_dir>/ <dest_dir>/`
+
+- Synchronize 2 directories and skip files newer on destination or with same checksum
+
+`rsync -rtvuc <src_dir>/ <dest_dir>/`

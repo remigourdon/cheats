@@ -1,0 +1,13 @@
+# ssh
+
+- Connect to a machine with SSH by jumping through another:
+
+`ssh -J <hop> <dest>`
+
+- Copy file from a machine with SSH by jumping through another:
+
+`scp -oProxyJump=<hop> <dest>:<src_file> <dest_file>`
+
+- Equivalent to `ssh-copy-id`:
+
+`cat ~/.ssh/id_rsa.pub | ssh proxmox "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys"`
